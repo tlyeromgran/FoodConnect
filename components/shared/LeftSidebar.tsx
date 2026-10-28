@@ -1,17 +1,14 @@
 "use client";
 
-import { SignOutButton, SignedIn, useAuth } from "@clerk/nextjs";
 import Image from "next/image";
 import Link from "next/link";
-import { usePathname, useRouter } from "next/navigation";
+import { usePathname } from "next/navigation";
 
 import { sidebarLinks } from "@/constants";
+import { signOut } from "@/lib/actions/auth.actions";
 
-const LeftSidebar = () => {
-  const router = useRouter();
+const LeftSidebar = ({ userId }: { userId: string | null }) => {
   const pathname = usePathname() ?? ''; // Provide an empty string as a fallback
-
-  const { userId } = useAuth();
 
   return (
     <section className='custom-scrollbar leftsidebar'>
@@ -43,9 +40,14 @@ const LeftSidebar = () => {
       </div>
 
       <div className='mt-10 px-6'>
-        <SignedIn>
-          <SignOutButton signOutCallback={() => router.push("/sign-in")}>
-            <div className='flex cursor-pointer gap-4 p-4'>
+        {userId && (
+          <form
+            action={async () => {
+              await signOut();
+              window.location.assign("/sign-in");
+            }}
+          >
+            <button type='submit' className='flex cursor-pointer gap-4 p-4'>
               <Image
                 src='/assets/logout.svg'
                 alt='logout'
@@ -54,9 +56,9 @@ const LeftSidebar = () => {
               />
 
               <p className='text-light-2 max-lg:hidden'>Logout</p>
-            </div>
-          </SignOutButton>
-        </SignedIn>
+            </button>
+          </form>
+        )}
       </div>
     </section>
   );

@@ -1,7 +1,7 @@
 import RestaurantList from "@/components/RestaurantList";
 import Pagination from "@/components/shared/Pagination";
 import { fetchUser, fetchUsers } from "@/lib/actions/user.actions";
-import { currentUser } from "@clerk/nextjs";
+import { currentUser } from "@/lib/auth";
 import dynamic from 'next/dynamic';
 import { redirect } from "next/navigation";
 

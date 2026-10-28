@@ -1,5 +1,6 @@
-import { SignUp } from "@clerk/nextjs";
+import { redirect } from "next/navigation";
 
+// Demo auth has a single built-in account, so there is nothing to sign up for.
 export default function Page() {
-  return <SignUp />;
+  redirect("/sign-in");
 }

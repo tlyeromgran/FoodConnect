@@ -4,15 +4,12 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
+    "db": "node scripts/dev-db.mjs",
     "build": "next build",
     "start": "next start",
     "lint": "next lint"
   },
   "dependencies": {
-    "@clerk/clerk-react": "^4.28.0",
-    "@clerk/clerk-sdk-node": "^4.12.21",
-    "@clerk/nextjs": "^4.27.1",
-    "@clerk/themes": "^1.7.5",
     "@googlemaps/js-api-loader": "^1.16.2",
     "@hookform/resolvers": "^3.1.1",
     "@radix-ui/react-label": "^2.0.2",
@@ -62,6 +59,7 @@
   "devDependencies": {
     "@types/google.maps": "^3.54.9",
     "@types/googlemaps": "^3.43.3",
-    "@types/lodash.debounce": "^4.0.9"
+    "@types/lodash.debounce": "^4.0.9",
+    "mongodb-memory-server": "11.3.0"
   }
 }

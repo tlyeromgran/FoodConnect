@@ -1,14 +1,9 @@
-import { SignIn } from "@clerk/nextjs";
+import SignInForm from "@/components/forms/SignInForm";
 
 export default function Page() {
   return (
-    <div style={{
-      display: 'flex',
-      justifyContent: 'center',
-      alignItems: 'center',
-      minHeight: '100vh'
-    }}>
-      <SignIn />
+    <div className='flex min-h-screen items-center justify-center'>
+      <SignInForm />
     </div>
   );
 }

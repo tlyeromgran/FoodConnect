@@ -1,5 +1,5 @@
 
-import { currentUser } from "@clerk/nextjs";
+import { currentUser } from "@/lib/auth";
 import { redirect } from "next/navigation";
 
 import ThreadCard from "@/components/cards/ThreadCard";

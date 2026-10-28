@@ -1,4 +1,4 @@
-import { currentUser } from "@clerk/nextjs";
+import { currentUser } from "@/lib/auth";
 
 import UserCard from "../cards/UserCard";
 
@@ -8,9 +8,13 @@ async function RightSidebar() {
   const user = await currentUser();
   if (!user) return null;
 
+  // Don't take down every page (including the post-login redirect) if the database is unreachable.
   const similarMinds = await fetchUsers({
     userId: user.id,
     pageSize: 5,
+  }).catch((error) => {
+    console.log("RightSidebar: could not load users:", error.message);
+    return { users: [] as any[] };
   });
 
   return (
